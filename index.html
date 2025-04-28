@@ -46,6 +46,19 @@
             transform-origin: center;
         }
 
+        .luxury-pattern1 {
+            position: absolute;
+            width: 600px;
+            height: 500px;
+            opacity: 0.8;
+            z-index: 0;
+            background-image: url('img/Mandala1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* animation: glowZoomFloat 20s ease-in-out infinite; */
+            transform-origin: center;
+        }
+
         @keyframes glowZoomFloat {
             /* 0% {
                 transform: scale(1) translateY(0) rotate(0deg);
@@ -77,19 +90,20 @@
         }
 
         .pattern-2 {
-            bottom: 15%;
-            right: 8%;
-            animation: float 10s ease-in-out infinite reverse;
-            transform: rotate(180deg);
+            top: 15%;
+            left: 0%;
+            /* animation: float 10s ease-in-out infinite reverse;
+            transform: rotate(180deg); */
 
         }
 
         .pattern-3 {
-            top: 50%;
-            left: 30%;
-            animation: float 12s ease-in-out infinite;
+            top: 15%;
+            right: 0%;
+            transform: rotate(180deg);
+            /* animation: float 12s ease-in-out infinite;
             opacity: 0.15;
-            transform-origin: center top;
+            transform-origin: center top; */
         }
 
         @keyframes float {
@@ -725,6 +739,184 @@
         </div>
     </nav>
 
+    <!-- Add this at the top of your body, before the navbar -->
+    <div class="welcome-overlay">
+        <div class="luxury-pattern1 pattern-2"></div>
+        <div class="luxury-pattern1 pattern-3"></div>
+        <div class="welcome-content">
+            <h1 class="welcome-title animate__animated animate__fadeInDown">WELCOME <br> TO</h1>
+
+            <img src="img/logo1.jpg" class="animate__animated animate__fadeInDown welcome-image" alt="ELARA Logo"
+                width="600"> <br>
+            <p class="welcome-text animate__animated animate__fadeIn animate__delay-1s">Discover the epitome of luxury
+            </p>
+            <button class="btn btn-enter animate__animated animate__fadeInUp animate__delay-2s">Enter Site</button>
+        </div>
+    </div>
+
+    <style>
+        /* Welcome Page Styles */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .welcome-title {
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .btn-enter {
+            background-color: transparent;
+            color: white;
+            border: 2px solid var(--primary);
+            padding: 12px 40px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-enter:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-enter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-enter:hover::before {
+            left: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 2.5rem;
+            }
+
+            .welcome-text {
+                font-size: 1.2rem;
+            }
+
+            .welcome-image {
+                width: 200px;
+            }
+
+            .luxury-pattern1 {
+                width: 100px;
+            }
+        }
+
+        /* Disable scrolling when welcome page is active */
+        body.welcome-active {
+            overflow: hidden;
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* Rest of your existing welcome page styles... */
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const welcomeOverlay = document.querySelector('.welcome-overlay');
+            const enterButton = document.querySelector('.btn-enter');
+            const body = document.body;
+
+            // Add class to body to disable scrolling
+            body.classList.add('welcome-active');
+
+            // Fade out welcome page when button is clicked
+            enterButton.addEventListener('click', dismissWelcome);
+
+            // Also dismiss when clicking anywhere
+            welcomeOverlay.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    dismissWelcome();
+                }
+            });
+
+            function dismissWelcome() {
+                welcomeOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    welcomeOverlay.style.display = 'none';
+                    body.classList.remove('welcome-active');
+
+                    // Optional: Smooth scroll to top after dismissing
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1000);
+            }
+
+            // Optional: Close after 5 seconds automatically
+            // setTimeout(dismissWelcome, 5000);
+        });
+    </script>
+
+    <script>
+        // Add this script to handle the welcome page dismissal
+        document.addEventListener('DOMContentLoaded', function () {
+            const welcomeOverlay = document.querySelector('.welcome-overlay');
+            const enterButton = document.querySelector('.btn-enter');
+
+            // Fade out welcome page when button is clicked
+            enterButton.addEventListener('click', function () {
+                welcomeOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    welcomeOverlay.style.display = 'none';
+                }, 1000);
+            });
+
+            // Optional: Also dismiss when clicking anywhere
+            welcomeOverlay.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    this.style.opacity = '0';
+                    setTimeout(() => {
+                        this.style.display = 'none';
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container mt-5">
@@ -735,7 +927,8 @@
                         Luxury for Every Woman, Beauty without Limits.</p>
 
 
-                    <span class="text-lg mb-3" style="font-size: medium;">At LA Evolution, we believe that luxury should be more than just a
+                    <span class="text-lg mb-3" style="font-size: medium;">At LA Evolution, we believe that luxury should
+                        be more than just a
                         privilege—it should be an
                         experience accessible to every woman, regardless of age or background. Our brand was
                         founded with the vision of redefining elegance by blending sophistication with affordability,
@@ -756,7 +949,7 @@
                 </div>
 
                 <div class="col-lg-12 hero-content">
-                    
+
                 </div>
             </div>
 
@@ -1193,84 +1386,84 @@
         });
     </script>
 
-<script>
-    // Add this JavaScript to your existing code
-    document.addEventListener('DOMContentLoaded', function() {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        // Function to update active nav link
-        function updateActiveNav() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-        
-        // Run on scroll and initial load
-        window.addEventListener('scroll', updateActiveNav);
-        updateActiveNav();
-        
-        // Smooth scrolling for nav links
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: 'smooth'
+    <script>
+        // Add this JavaScript to your existing code
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Function to update active nav link
+            function updateActiveNav() {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+
+                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
                 });
-                
-                // Update URL without refreshing
-                history.pushState(null, null, targetId);
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Run on scroll and initial load
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav();
+
+            // Smooth scrolling for nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Update URL without refreshing
+                    history.pushState(null, null, targetId);
+                });
             });
         });
-    });
     </script>
-    
+
     <style>
-    /* Update your existing nav-link styles */
-    .nav-link {
-        position: relative;
-        color: var(--secondary) !important;
-        margin: 0 15px;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        transition: width 0.3s ease;
-    }
-    
-    .nav-link:hover::after,
-    .nav-link.active::after {
-        width: 100%;
-    }
-    
-    .nav-link.active {
-        color: var(--primary) !important;
-    }
+        /* Update your existing nav-link styles */
+        .nav-link {
+            position: relative;
+            color: var(--secondary) !important;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary) !important;
+        }
     </style>
 
     <!-- Footer -->
@@ -1281,7 +1474,8 @@
                     <div class="footer-logo">
                         <img src="img/logo1.jpg" alt="ELARA Logo">
                     </div>
-                    <p style="color: rgba(255, 255, 255, 0.7);">More than just a brand, LA Evolution is a community of empowered women, embracing
+                    <p style="color: rgba(255, 255, 255, 0.7);">More than just a brand, LA Evolution is a community of
+                        empowered women, embracing
                         self-love and authenticity.</p>
                     <div class="social-links mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
