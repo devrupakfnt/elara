@@ -713,7 +713,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
+                        <a class="nav-link active" href="#" id="homeLink">Home</a>
+
+                        <script>
+                        document.getElementById('homeLink').addEventListener('click', function(e) {
+                            e.preventDefault(); // Prevent default anchor behavior
+                            
+                            // Check if we're already on the homepage
+                            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                                // Smooth reload of the current page
+                                window.location.reload();
+                            } else {
+                                // Navigate to homepage
+                                window.location.reload();
+                            }
+                        });
+                        </script>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About Us</a>
