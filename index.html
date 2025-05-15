@@ -434,13 +434,13 @@
         }
 
         .did-you-know1 {
-            background-color: var(--dark-gray)!important;
+            background-color: var(--dark-gray) !important;
             padding: 100px 0;
             position: relative;
         }
 
-        #product{
-             background-color: var(--dark-gray);
+        #product {
+            background-color: var(--dark-gray);
         }
 
         .fact-box {
@@ -695,6 +695,16 @@
                 max-width: 90%;
             }
         }
+
+        @media (max-width: 767px) {
+            #about .reveal {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: translateY(0)
+                /* Optional: ensure visibility */
+            }
+        }
     </style>
 </head>
 
@@ -740,7 +750,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#products">Our Products</a>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#features">Why Choose Us?</a>
                     </li>
                     <li class="nav-item">
@@ -958,71 +968,72 @@
     </script>
 
     <style>
-    .hero-carousel {
-        position: relative;
-    }
+        .hero-carousel {
+            position: relative;
+        }
 
-    .hero-carousel .carousel-item {
-        height: 100vh;
-        min-height: 500px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        .hero-carousel .carousel-item {
+            height: 100vh;
+            min-height: 500px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .hero-carousel img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-    }
+        .hero-carousel img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
 
-    .carousel-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
-        z-index: 2;
-    }
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            /* Optional dark overlay */
+            z-index: 2;
+        }
 
-    .carousel-caption-centered {
-        position: relative;
-        z-index: 3;
-        text-align: center;
-        color: white;
-        padding: 20px;
-    }
+        .carousel-caption-centered {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
 
-    .carousel-caption-centered h1 {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    .carousel-caption-centered p {
-        font-size: 1rem;
-        margin: 10px 0;
-    }
-
-    .carousel-caption-centered .btn {
-        margin: 5px;
-    }
-
-    @media (min-width: 768px) {
         .carousel-caption-centered h1 {
-            font-size: 3rem;
+            font-size: 2rem;
+            font-weight: bold;
         }
 
         .carousel-caption-centered p {
-            font-size: 1.25rem;
+            font-size: 1rem;
+            margin: 10px 0;
         }
-    }
-</style>
+
+        .carousel-caption-centered .btn {
+            margin: 5px;
+        }
+
+        @media (min-width: 768px) {
+            .carousel-caption-centered h1 {
+                font-size: 3rem;
+            }
+
+            .carousel-caption-centered p {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1033,17 +1044,17 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                             alt="Luxury Background 1">
+                            alt="Luxury Background 1">
                         <div class="carousel-overlay"></div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://images.unsplash.com/photo-1628689241275-ecff23d1f8ed?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                             alt="Luxury Background 2">
+                            alt="Luxury Background 2">
                         <div class="carousel-overlay"></div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
-                             alt="Luxury Background 3">
+                            alt="Luxury Background 3">
                         <div class="carousel-overlay"></div>
                     </div>
                 </div>
